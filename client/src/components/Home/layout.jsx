@@ -14,7 +14,7 @@ const Mainlayout = () => {
     navigate(`/${path}`)
   }
 
-  const hideLoginButton = location.pathname === '/auth/login'
+  const hideLoginButton = location.pathname === '/auth/login' || location.pathname === '/auth/signup'
   const hideConvertButton = location.pathname === '/convert'
 
   return (

@@ -6,8 +6,17 @@ import AuthLayout from './components/auth/layout'
 import Mainlayout from './components/Home/layout'
 import BrailleBridgePage from './pages/Home/BrailleBridgePage'
 import NotFound from './pages/notfound'
+import CheckAuth from './components/common/checkAuth'
+import { useDispatch } from 'react-redux'
+import { useEffect } from 'react'
+import { checkAuth } from './store/authSlice'
+import Conversion from './pages/conversion/conversion'
 
 function App() {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(checkAuth());
+  }, [dispatch]);
   return (
     <Routes>
       <Route path="/" element={<Mainlayout />}>
@@ -16,6 +25,7 @@ function App() {
           <Route path="login" element={<AuthLogin />} />
           <Route path="signup" element={<AuthSignUp />} />
         </Route>
+        <Route path='convert' element={<CheckAuth><Conversion/></CheckAuth>}/>
         <Route path="*" element={<NotFound />} />
       </Route>
     </Routes>
