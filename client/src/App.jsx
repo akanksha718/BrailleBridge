@@ -5,6 +5,7 @@ import AuthSignUp from './pages/auth/signup'
 import AuthLayout from './components/auth/layout'
 import Mainlayout from './components/Home/layout'
 import BrailleBridgePage from './pages/Home/BrailleBridgePage'
+import NotFound from './pages/notfound'
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Route path="login" element={<AuthLogin />} />
           <Route path="signup" element={<AuthSignUp />} />
         </Route>
+        <Route path="*" element={<NotFound />} />
       </Route>
     </Routes>
   )

@@ -44,16 +44,19 @@
 // }
 
 // export default AuthLogin
+
 import React from 'react'
 
-const login = () => {
+const AuthLogin = () => {
   return (
     <div>
-      
+      hu
     </div>
   )
 }
 
-export default login
+export default AuthLogin
+
+
 
 

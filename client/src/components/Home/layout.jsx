@@ -1,14 +1,21 @@
 import React from 'react'
-import { useNavigate, Outlet } from 'react-router-dom'
+import { useNavigate, Outlet, useLocation } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 import Logo from '../common/logo'
 import { Button } from '../ui/button'
 import Footer from '../common/footer'
 
 const Mainlayout = () => {
   const navigate = useNavigate()
- const onNavigate = (path) => {
+  const location = useLocation()
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated)
+
+  const onNavigate = (path) => {
     navigate(`/${path}`)
   }
+
+  const hideLoginButton = location.pathname === '/auth/login'
+  const hideConvertButton = location.pathname === '/convert'
 
   return (
     <div className="min-h-screen flex flex-col bg-gradient-to-b from-white via-gray-50 to-gray-100">
@@ -17,12 +24,25 @@ const Mainlayout = () => {
         <Logo />
 
         <nav className="flex items-center gap-3">
-          <Button
-            className="rounded-xl text-sm font-medium  hover:bg-grey-200 transition-all duration-200"
-            onClick={() => onNavigate('auth/login')}
-          >
-            Login
-          </Button>
+          {isAuthenticated ? (
+            !hideConvertButton && (
+              <Button
+                className="rounded-xl text-sm font-medium hover:bg-gray-200 transition-all duration-200"
+                onClick={() => onNavigate('convert')}
+              >
+                Convert
+              </Button>
+            )
+          ) : (
+            !hideLoginButton && (
+              <Button
+                className="rounded-xl text-sm font-medium hover:bg-gray-200 transition-all duration-200"
+                onClick={() => onNavigate('auth/signup')}
+              >
+                Login
+              </Button>
+            )
+          )}
         </nav>
       </header>
 
