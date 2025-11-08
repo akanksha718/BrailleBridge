@@ -1,7 +1,7 @@
 export const registerformConfig = [
     {
         name: "userName",
-        label: "User Name",
+        label: "Name",
         placeholder: "Enter your name",
         type: "text",
         componentType: "input",

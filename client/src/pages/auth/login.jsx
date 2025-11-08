@@ -26,21 +26,37 @@ const AuthLogin = () => {
       })
     };
     return (
-        <div className="mx-auto w-full max-w-md space-y-6">
-            <div className='text-center'>
-                <h1 className='text-3xl font-bold tracking-tight text-foreground'>WelCome Back</h1>
+        <div className="flex items-center justify-center ">
+            <div className="w-full max-w-md">
+                <div className="bg-white  p-4 ">
+                    {/* Header */}
+                    <div className="text-center mb-4 space-y-2">
+                        <h1 className="text-4xl font-bold bg-gradient-to-r from-green-600 to-teal-600 text-transparent bg-clip-text">
+                            Welcome Back
+                        </h1>
+                        <p className="text-gray-600">Login in to access Braille Bridge</p>
+                    </div>
+
+                    {/* Form */}
+                    <div>
+                        <CommonForm  
+                          formControls={LoginformConfig}
+                          buttonText={"Sign in"}
+                          formData={formData}
+                          setFormData={setFormData} 
+                          onsubmit={onsubmit}
+                        />
+                    </div>
+
+                    {/* Footer */}
+                    <p className='text-center mt-6 text-gray-600'>
+                        Don't have an account?{' '}
+                        <Link className='font-semibold text-green-600 hover:text-green-700 hover:underline transition-colors' to={'/auth/signup'}>
+                            Sign up
+                        </Link>
+                    </p>
+                </div>
             </div>
-            <div>
-                <CommonForm  
-                  formControls={LoginformConfig}
-                  buttonText={"Sign in"}
-                  formData={formData}
-                  setFormData={setFormData} 
-                  onsubmit={onsubmit}
-                />
-            </div>
-            <p className='mt-2'>Don't have an account?
-                <Link className='font-medium ml-2 text-primery hover:underline' to="/auth/signup">Sign up</Link></p>
         </div>
     )
 }

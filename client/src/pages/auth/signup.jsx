@@ -28,14 +28,38 @@ const AuthSignUp = () => {
     });
   };
   return (
-    <div className='mx-auto w-full max-w-md space-y-6'>
-      <div className='text-center'>
-        <h1 className='text-3xl font-bold tracking-tight text-foreground'>Create new Account</h1>
-      </div>
-      <CommonForm formControls={registerformConfig} buttonText={'Create Account'}
-        formData={formData} setFormData={setFormData} onsubmit={onsubmit} />
-      <p className='mt-2'>Already have an account?..<Link className='font-medium ml-2 text-primary hover:underline ' to={'/auth/login'}>Login</Link></p>
-    </div>
+     <div className="flex items-center justify-center ">
+            <div className="w-full max-w-md">
+                <div className="bg-white  p-4 ">
+                    {/* Header */}
+                    <div className="text-center mb-4 space-y-2">
+                        <h1 className="text-4xl font-bold bg-gradient-to-r from-green-600 to-teal-600 text-transparent bg-clip-text">
+                            Create Account
+                        </h1>
+                        <p className="text-gray-600">Join Braille Bridge Today</p>
+                    </div>
+
+                    {/* Form */}
+                    <div>
+                        <CommonForm  
+                          formControls={registerformConfig}
+                          buttonText={"Create Account"}
+                          formData={formData}
+                          setFormData={setFormData} 
+                          onsubmit={onsubmit}
+                        />
+                    </div>
+
+                    {/* Footer */}
+                    <p className='text-center mt-6 text-gray-600'>
+                        Already have an account?{' '}
+                        <Link className='font-semibold text-green-600 hover:text-green-700 hover:underline transition-colors' to={'/auth/login'}>
+                            Login In
+                        </Link>
+                    </p>
+                </div>
+            </div>
+        </div>
   )
 }
 

@@ -1,0 +1,122 @@
+==========================================
+  INSTALL TESSERACT OCR FOR IMAGE CONVERSION
+==========================================
+
+PROBLEM:
+---------
+"tesseract is not installed or it's not in your PATH" error
+when trying to convert images to braille.
+
+SOLUTION:
+----------
+
+STEP 1: Download Tesseract
+---------------------------
+1. Open this link in your browser:
+   https://github.com/UB-Mannheim/tesseract/wiki
+
+2. Scroll down and click on "Latest Installers"
+
+3. Download: "tesseract-ocr-w64-setup-5.x.x.exe"
+   (Latest version, probably v5.5.0 or newer)
+
+STEP 2: Install Tesseract
+--------------------------
+1. Run the downloaded .exe file
+
+2. During installation:
+   - Click "Next"
+   - IMPORTANT: Check the box "Add to PATH"
+   - IMPORTANT: Check "Install tessdata files"
+   - Continue with "Next" and "Install"
+   - Click "Finish"
+
+3. Installation path will be:
+   C:\Program Files\Tesseract-OCR\
+
+STEP 3: Verify Installation
+---------------------------
+Open a NEW PowerShell or Command Prompt and run:
+
+    tesseract --version
+
+You should see something like:
+    tesseract 5.5.0
+
+If you see the version, Tesseract is installed correctly! ✅
+
+STEP 4: Restart Services
+------------------------
+1. Go to the terminal running the Python service
+2. Press Ctrl+C to stop it
+3. Run: cd BrailleBridge/processor
+4. Run: python app.py
+
+You should see in the output:
+    ✓ Tesseract found in PATH: 5.5.0
+
+STEP 5: Test Image Conversion
+-----------------------------
+1. Open: http://localhost:5173
+2. Go to the conversion page
+3. Click "Upload Image"
+4. Select an image with text
+5. It should now convert successfully! 🎉
+
+==========================================
+TROUBLESHOOTING
+==========================================
+
+If "tesseract --version" doesn't work:
+--------------------------------------
+1. Restart your terminal/PowerShell/VS Code
+2. Or add to PATH manually:
+   - Press Win + X
+   - Click "System"
+   - Click "Advanced system settings"
+   - Click "Environment Variables"
+   - Under "System Variables", find "Path"
+   - Click "Edit"
+   - Click "New"
+   - Add: C:\Program Files\Tesseract-OCR
+   - Click OK on all dialogs
+   - Close and reopen terminal
+
+If still not working after installing:
+--------------------------------------
+Edit this file: BrailleBridge/processor/app.py
+
+Find this section (around line 25-30):
+    windows_paths = [
+        r'C:\Program Files\Tesseract-OCR\tesseract.exe',
+        ...
+    ]
+
+Add your Tesseract path if different, then restart Python service.
+
+Alternative Download Link:
+--------------------------
+If GitHub link doesn't work, try:
+https://digi.bib.uni-mannheim.de/tesseract/
+
+==========================================
+QUICK START AFTER INSTALLATION
+==========================================
+
+Once Tesseract is installed:
+
+1. Restart Python service:
+   cd BrailleBridge/processor
+   python app.py
+
+2. Test with an image that has text
+
+3. Should work perfectly now!
+
+==========================================
+NEED MORE HELP?
+==========================================
+
+See: INSTALL_TESSERACT.md for detailed instructions
+
+
